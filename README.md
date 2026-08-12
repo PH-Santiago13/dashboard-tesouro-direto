@@ -146,9 +146,9 @@ RETURN
 
 ## 🔭 Próximos passos
 
-- Finalizar as questões de SQL pendentes (window functions avançadas e ranking por especialidade).
-- Adicionar medida de participação percentual por tipo de título.
 - Publicar no Power BI Service para link compartilhável.
+- Adicionar medida de participação percentual por tipo de título.
+- Cruzar receita/taxa com volume vendido para identificar se o brasileiro compra mais quando a rentabilidade está mais alta.
 
 ---
 

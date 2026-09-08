@@ -14,11 +14,21 @@
 
 ## 📌 Sobre o projeto
 
-Como o brasileiro investe no Tesouro Direto — e como isso mudou desde 2002? Essa foi a pergunta de negócio que guiou este projeto, construído a partir de **dados públicos reais** do Tesouro Nacional (vendas, preços/taxas e perfil de investidores), com mais de **2,8 milhões de linhas** ao todo.
+### 🩹 O problema
 
-Diferente do Projeto 1 (dados fictícios), aqui o desafio foi outro: pegar uma base real, suja e desestruturada — CSVs com encoding quebrado, vírgula decimal, datas em texto — e transformar isso numa base analítica confiável, do zero, usando SQL puro.
+Diferente do Projeto 1, aqui a "dor" não veio de uma empresa — veio de uma lacuna real de informação. Não existe, de forma consolidada e fácil de consultar, uma visão histórica clara de como o brasileiro investe no Tesouro Direto ao longo de mais de duas décadas: quais títulos ele prefere, como isso mudou ano a ano, e quem é esse investidor. Os dados existem e são públicos, mas estão espalhados em CSVs brutos — com encoding quebrado, vírgula decimal e datas em texto — praticamente inutilizáveis sem tratamento.
+
+### 🛠️ A solução
+
+Construí, do zero, um pipeline completo em MySQL para importar, limpar e tipar mais de **2,8 milhões de linhas** de dados reais do Tesouro Nacional (vendas, preços/taxas e perfil de investidores), e modelei tudo num Star Schema com duas tabelas fato conectadas por dimensões conformadas. O resultado é um dashboard em Power BI onde qualquer pessoa navega o histórico de vendas por título e por período, e entende o perfil do investidor brasileiro, sem precisar tocar em uma linha de SQL.
 
 > ⚠️ **Nota:** os dados são públicos e de livre acesso, disponibilizados pelo Tesouro Nacional.
+
+### 📈 O resultado
+
+O pipeline entregou uma base confiável de +2,8 milhões de linhas, validada em cada etapa (contagem, amostra visual e teste de encoding) — e revelou, por exemplo, que o **Tesouro Selic** domina o volume de vendas (coerente com o perfil conservador do investidor médio brasileiro) e que a própria taxa do Selic já operou **negativa** em períodos históricos específicos (2008–2013) — não é erro de importação, é comportamento real de mercado que só aparece quando se confia na inspeção do dado, não no "achismo".
+
+> 💼 Esse tipo de cruzamento — produto × tempo × perfil de investidor — é exatamente o que uma fintech, corretora, ou uma consultoria financeira independente (como a que também estou construindo, a [Santiago Finanças](https://www.instagram.com/santi.consultorfin)) usaria para decidir **em qual perfil de cliente focar a aquisição** ou **qual conteúdo educativo priorizar** para cada público. Não é uma estimativa de economia — aqui não existe uma empresa cortando custo — mas é o tipo de decisão de negócio (que produto oferecer, pra qual público) que esse modelo de dados sustenta.
 
 **Pergunta de negócio central:** *Quais títulos o brasileiro mais compra, como o volume evolui ao longo do tempo, e qual o perfil de quem investe?*
 
